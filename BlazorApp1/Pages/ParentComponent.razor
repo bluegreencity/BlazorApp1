@@ -1,0 +1,17 @@
+﻿@using BlazorApp1.Components
+@page "/ParentComponent"
+
+<h1>Parent-child example</h1>
+
+<ChildComponent Title="Panel Title from Parent"
+                OnClickCallback="@ShowMessage">
+    Content of the child component is supplied
+    by the parent component. @ButtonClickedMessage
+</ChildComponent>
+@code{
+    private string ButtonClickedMessage = "";
+    public void ShowMessage()
+    {
+        ButtonClickedMessage = "Parent ShowMessage Called";
+    }
+}
