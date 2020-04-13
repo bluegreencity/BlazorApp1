@@ -1,7 +1,11 @@
-﻿@page "/splatting"
+﻿@using BlazorApp1.Components
+@page "/splatting"
 <h3>Splatting</h3>
 <input id="useIndividualParams" maxlength="@Maxlength" placeholder="@Placeholder" required="@Required" size="@Size" />
 <input id="useAttributesDict" @attributes="InputAttributes" />
+
+<SplattingChildComponent src="https://www.google.com/logos/doodles/2020/stay-home-save-lives-copy-6753651837108779-s.png" width="100" height="100" />
+<SplattingChildComponent width="50" height="50" />
 
 @code {
     [Parameter]
@@ -25,4 +29,5 @@
             { "required", "required" },
             { "size", "50" }
         };
+
 }

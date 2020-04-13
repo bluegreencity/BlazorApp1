@@ -1,0 +1,10 @@
+﻿<h3>SplattingChildComponent</h3>
+
+<div>
+    <img src="https://bluegreencity.github.io/assets/images/me/me.png" @attributes="AdditionalAttributes" />
+</div>
+
+@code {
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> AdditionalAttributes { get; set; }
+}

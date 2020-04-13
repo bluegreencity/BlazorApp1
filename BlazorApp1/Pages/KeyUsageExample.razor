@@ -1,0 +1,28 @@
+﻿@using BlazorApp1;
+@page "/keyusageexample"
+
+<h3>KeyUsageExample</h3>
+
+<input placeholder="Name" @bind="newName" />
+<input placeholder="Details" @bind="newDetails" />
+<button @onclick="AddTodo">Add Person</button>
+
+@foreach (var person in People)
+{
+    <DetailsEditor @key="person" Name="@person.Name" Details="@person.Details" />
+}
+
+@code {
+    private IList<PersonItem> People = new List<PersonItem>();
+    private string newName;
+    private string newDetails;
+
+    private void AddTodo()
+    {
+        if (!string.IsNullOrEmpty(newName) && !string.IsNullOrEmpty(newDetails))
+        {
+            People.Add(new PersonItem { Name = newName, Details = newDetails });
+            newName = newDetails = string.Empty;
+        }
+    }
+}

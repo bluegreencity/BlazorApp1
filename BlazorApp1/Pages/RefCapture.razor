@@ -1,0 +1,17 @@
+﻿@using BlazorApp1.Components
+@page "/refcapture"
+<h3>RefCapture</h3>
+@*@ref는 컴포넌트간의 통신을 위해 사용한다.*@
+<MyLoginDialog @ref="_loginDialog" />
+<p>@_LoginStatus</p>
+    <button class="btn btn-primary" @onclick="OnSomething">Click me</button>
+    @code {
+        private MyLoginDialog _loginDialog;
+        private string _LoginStatus;
+
+        private void OnSomething()
+        {
+            string LoginStatus = _loginDialog.ShowLoginStatus();
+            _LoginStatus = LoginStatus;
+        }
+    }
