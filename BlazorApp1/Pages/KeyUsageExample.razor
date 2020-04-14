@@ -1,23 +1,27 @@
 ﻿@using BlazorApp1;
+@using BlazorApp1.Components
 @page "/keyusageexample"
 
 <h3>KeyUsageExample</h3>
 
 <input placeholder="Name" @bind="newName" />
 <input placeholder="Details" @bind="newDetails" />
-<button @onclick="AddTodo">Add Person</button>
-
+<button class="btn btn-primary" @onclick="AddPerson">Add Person</button>
+<p />
+<p />
 @foreach (var person in People)
 {
+    //@key를 @person.Name으로 했을때 같은 이름이 입력되면 에러가 발생한다.
+    //<DetailsEditor @key="@person.Name" Name="@person.Name" Details="@person.Details" />
     <DetailsEditor @key="person" Name="@person.Name" Details="@person.Details" />
 }
 
 @code {
-    private IList<PersonItem> People = new List<PersonItem>();
+    private List<PersonItem> People = new List<PersonItem>();
     private string newName;
     private string newDetails;
 
-    private void AddTodo()
+    private void AddPerson()
     {
         if (!string.IsNullOrEmpty(newName) && !string.IsNullOrEmpty(newDetails))
         {
