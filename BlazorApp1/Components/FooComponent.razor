@@ -1,0 +1,9 @@
+﻿<h1>FooComponent</h1>
+@using BlazorApp1.UIThemeClasses
+
+<p>The meaning of life is @MeaningOfLife.</p>
+
+@code {
+    [CascadingParameter] 
+    int MeaningOfLife { get; set; }
+}
