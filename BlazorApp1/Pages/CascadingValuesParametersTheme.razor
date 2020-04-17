@@ -15,7 +15,12 @@
 </p>
 
 <p>
-    <button class="btn @ThemeInfo.ButtonClass" @onclick="IncrementCount">
+    <button class="btn @ThemeInfoSuccess_Btn.ButtonClass" @onclick="IncrementCount">
+        Increment Counter (Themed)
+    </button>
+</p>
+<p>
+    <button class="btn @ThemeInfoPrimary_Btn.ButtonClass" @onclick="IncrementCount">
         Increment Counter (Themed)
     </button>
 </p>
@@ -24,8 +29,11 @@
 @code {
     private int _currentCount = 0;
 
-    [CascadingParameter]
-    protected ThemeInfo ThemeInfo { get; set; }
+    [CascadingParameter(Name = "Success_Btn")]
+    protected ThemeInfo ThemeInfoSuccess_Btn { get; set; }
+
+    [CascadingParameter(Name = "Primary_Btn")]
+    protected ThemeInfo ThemeInfoPrimary_Btn { get; set; }
 
     private void IncrementCount()
     {

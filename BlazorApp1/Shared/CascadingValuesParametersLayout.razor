@@ -7,15 +7,18 @@
             <NavMenu />
         </div>
         <div class="col-sm-9">
-            <CascadingValue Value="_theme">
-                <div class="content px-4">
-                    @Body
-                </div>
+            <CascadingValue Value="_theme1" Name="Success_Btn">
+                <CascadingValue Value="_theme2" Name="Primary_Btn">
+                    <div class="content px-4">
+                        @Body
+                    </div>
+                </CascadingValue>
             </CascadingValue>
         </div>
     </div>
 </div>
 
 @code {
-    private ThemeInfo _theme = new ThemeInfo { ButtonClass = "btn-success" };
+    private ThemeInfo _theme1 = new ThemeInfo { ButtonClass = "btn-success" };
+    private ThemeInfo _theme2 = new ThemeInfo { ButtonClass = "btn-primary" };
 }
