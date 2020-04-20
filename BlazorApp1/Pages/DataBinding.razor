@@ -1,0 +1,86 @@
+﻿@page "/databinding"
+@using BlazorApp1.Components
+
+<h3>DataBinding</h3>
+
+<input @bind="CurrentValue" />
+<p />
+<input value="@CurrentValue" />
+<p />
+<input value="@CurrentValue" @onchange="@((ChangeEventArgs __e) => CurrentValue = __e.Value.ToString())" />
+<p />
+<input @bind="CurrentValue" @bind:event="oninput" />
+
+
+@code {
+    private string CurrentValue { get; set; }
+}
+
+
+<p />
+<p>
+    <input type="text" @bind="_paragraphStyle" />
+</p>
+
+<p @bind-style="_paragraphStyle" @bind-style:event="onchange">
+    Blazorify the app!
+</p>
+
+@code{
+    private string _paragraphStyle = "color:red";
+}
+
+
+<p />
+
+<input @bind="MyProperty" />
+
+@code{
+    [Parameter]
+    public int MyProperty { get; set; } = 123;
+}
+
+<p />
+
+<input @bind="StartDate" @bind:format="yyyy-MM-dd" />
+@code{
+    [Parameter]
+    public DateTime StartDate { get; set; } = new DateTime(2020, 4, 12);
+}
+
+<p />
+<p />
+<p />
+<input type="date" @bind="StartDate" @bind:format="yyyy-MM-dd" />
+
+<h1>Parent Component</h1>
+
+<p>ParentYear: @ParentYear</p>
+
+<DataBindingChildComponent @bind-Year="ParentYear" />
+<p />
+<DataBindingChildComponent @bind-Year="ParentYear" @bind-Year:event="YearChanged" />
+
+<button class="btn btn-primary" @onclick="ChangeTheYear">
+    Change Year to 1986
+</button>
+
+@code{
+    [Parameter]
+    public int ParentYear { get; set; } = 1979;
+
+    private void ChangeTheYear()
+    {
+        ParentYear = 1986;
+    }
+}
+
+<p />
+<p />
+<p />
+<PasswordField @bind-Password="_password" />
+
+
+@code{
+    private string _password;
+}

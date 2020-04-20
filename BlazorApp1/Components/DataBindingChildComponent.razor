@@ -1,0 +1,11 @@
+﻿<h3>DataBindingChildComponent</h3>
+
+<p>year: @Year</p>
+
+@code {
+    [Parameter]
+    public int Year { get; set; }
+
+    [Parameter]
+    public EventCallback<int> YearChanged { get; set; }
+}
